@@ -1,10 +1,15 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-    output: "export",
-    basePath: "/generic_project",
-    images: {
-        unoptimized: true
-    }
-};
+import { PHASE_DEVELOPMENT_SERVER } from "next/constants.js";
 
-export default nextConfig;
+export default (phase, { defaultConfig }) => {
+    if (phase === PHASE_DEVELOPMENT_SERVER) {
+        return {}
+    }
+
+    return {
+        output: "export",
+        basePath: "/generic_project",
+        images: {
+            unoptimized: true
+        }
+    }
+}
